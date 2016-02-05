@@ -1,6 +1,6 @@
 # Resume
 
-My resume with both [online]() and [pdf]() versions (from LaTeX) using [mwhite's template](https://github.com/mwhite/resume)
+My resume with both [online]() and [pdf](https://github.com/yarray/resume/raw/master/resume.pdf) versions (from LaTeX) using [mwhite's template](https://github.com/mwhite/resume)
 
 ## Dependencies
 
