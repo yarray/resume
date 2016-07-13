@@ -1,0 +1,240 @@
+\documentclass[12pt,]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+    \usepackage{xltxtra,xunicode}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+  \newcommand{\euro}{€}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\ifxetex
+  \usepackage[setpagesize=false, % page size defined by xetex
+              unicode=false, % unicode breaks when used with xetex
+              xetex]{hyperref}
+\else
+  \usepackage[unicode=true]{hyperref}
+\fi
+\hypersetup{breaklinks=true,
+            bookmarks=true,
+            pdfauthor={},
+            pdftitle={},
+            colorlinks=true,
+            citecolor=blue,
+            urlcolor=blue,
+            linkcolor=magenta,
+            pdfborder={0 0 0}}
+\urlstyle{same}  % don't use monospace font for urls
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+
+\date{}
+\usepackage[top=1in, bottom=1in, left=1.1in, right=1.1in]{geometry}
+\usepackage{tgpagella}
+\usepackage[dvipsnames]{xcolor}
+\ifxetex
+\usepackage{xeCJK}
+\setCJKmainfont[
+    BoldFont={HYQiHeiX2-GEW}, 
+    % BoldFont={FZLTZHK--GBK1-0}, 
+    ItalicFont={STKaiti},
+    % BoldItalicFont={HYQiHei-EES}
+    BoldItalicFont={HiraginoSansGB-W3}
+    % BoldItalicFont={FZLTXHK--GBK1-0}
+% ]{STSongti-SC-Regular}
+]{HYa6gj}
+  %\setmainfont[Mapping=tex-text]{TeX Gyre Pagella}
+\renewcommand{\baselinestretch}{1.5} % Chinsese should have larger line height
+\fi
+
+\setmainfont[
+    BoldFont={MinionPro-Bold}, 
+    ItalicFont={MinionPro-It}
+]{MinionPro-Regular}
+\usepackage{titlesec}
+\titleformat{\section}{\Huge\bfseries\itshape}{\thesection}{1em}{}
+\titlespacing{\section}{0pt}{-2.5em}{2.3em}
+% \titleformat{\subsection}{\huge\bfseries}{\thesubsection}{2em}{\textcolor{NavyBlue}{\titlerule[0.1em]\vspace{-0.5em}\\}}
+\titleformat{\subsection}{\huge\bfseries}{\thesubsection}{2em}{}
+\titleformat{\subsubsection}
+    {}{\thesubsubsection}{1em}{}
+\titlespacing{\subsubsection}{0pt}{0pt}{-2.278em}
+
+%\usepackage{multicol}
+\pagestyle{empty}
+\hyphenation{Media-Wiki}
+\setlength{\leftskip}{9em}
+\setlength{\hangindent}{2em}
+
+\usepackage{enumitem}
+\setlist[1]{leftmargin=8.53em, label=, itemindent=-1em}
+\setenumerate[1]{leftmargin=11.25em, label=\tiny$\blacktriangleright$}
+
+% from http://tex.stackexchange.com/a/29796/16139
+\newsavebox{\zerobox}
+\newenvironment{nospace}
+  {\par\edef\theprevdepth{\the\prevdepth}\nointerlineskip
+   \setbox\zerobox=\vtop to 0pt\bgroup
+   \hrule height0pt\kern\dimexpr\baselineskip-\topskip\relax
+  }
+  {\par\vss\egroup\ht\zerobox=0pt \wd\zerobox=0pt \dp\zerobox=0pt
+   \box\zerobox}
+
+\setlength{\quotewidth}{0.65\textwidth}
+
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+\begin{document}
+
+\begin{nospace}\begin{flushright}
+\vspace{-2em}湖南省长沙市\\
+德雅路109号，410073\\
++86 150 7480 7123\\
+anran.yang.china@gmail.com
+\end{flushright}\end{nospace}
+
+\section{杨岸然}\label{ux6768ux5cb8ux7136}
+
+\begin{quote}
+1988年7月生人，擅沟通，乐于学习；具有全栈开发能力，精通数种编程语言与技术框架，可独立完成从建模到架构，从后端服务设计开发到前端人机界面设计开发等工作；在地理信息领域有深入理解，尤擅时空数据分析。
+\end{quote}
+
+\subsection{教育经历}\label{ux6559ux80b2ux7ecfux5386}
+
+\subsubsection{2010 -}\label{section}
+
+国防科学技术大学\\
+\emph{工学博士在读（硕转博），地理信息系统专业}
+
+\subsubsection{2014 - 2015}\label{section-1}
+
+海德堡大学，德国\\
+\emph{GIScience Research Group，公派学术访问一年}
+
+\subsubsection{2006 - 2010}\label{section-2}
+
+北京大学\\
+\emph{理学学士，地理信息系统专业，GPA 3.5/4}
+
+\subsection{技能}\label{ux6280ux80fd}
+
+\subsubsection{计算机}\label{ux8ba1ux7b97ux673a}
+
+\begin{itemize}
+\tightlist
+\item
+  网络应用程序开发（JavaScript/CSS/HTML）
+\item
+  地理信息服务开发（Python/C++）
+\item
+  高性能服务器配置管理（Linux/Docker/Bash）
+\item
+  软件自动化验证与测试（Tsung/PAT/Cucumber）
+\item
+  时空数据分析（R/C++/C/SQL）
+\end{itemize}
+
+\subsubsection{学术研究}\label{ux5b66ux672fux7814ux7a76}
+
+\begin{itemize}
+\tightlist
+\item
+  长尾数据统计分析
+\item
+  通信顺序进程（CSP）
+\end{itemize}
+
+\subsubsection{其它}\label{ux5176ux5b83}
+
+\begin{itemize}
+\tightlist
+\item
+  平面设计，绘画
+\end{itemize}
+
+\subsection{项目经历}\label{ux9879ux76eeux7ecfux5386}
+
+\subsubsection{2014 -}\label{section-3}
+
+时空数据分析 - 基于志愿者地理信息（VGI）的历史贡献数据
+
+\begin{enumerate}
+\tightlist
+\item
+  开放街图历史数据分析时空模型与工具集
+\item
+  数据质量与社群构成分析
+\end{enumerate}
+
+\subsubsection{2011 -}\label{section-4}
+
+高性能地理信息系统
+
+\begin{enumerate}
+\tightlist
+\item
+  系统架构 \emph{两名主要设计者之一}
+\item
+  高性能地理计算流程化调度引擎 \emph{负责人}
+\item
+  交互设计及部分前端界面实现 \emph{负责人}
+\item
+  绘制引擎与数据引擎 \emph{选型与初版实现}
+\item
+  自动化部署工具 \emph{负责人}
+\item
+  自动化负载与性能测试 \emph{负责人}
+\end{enumerate}
+
+\subsection{发表论文}\label{ux53d1ux8868ux8bbaux6587}
+
+\begin{itemize}
+\tightlist
+\item
+  A. Yang, H. Fan, N. Jing, Y. Sun, and A. Zipf, ``Temporal Analysis on
+  Contribution Inequality in OpenStreetMap: A Comparative Study for Four
+  Countries'', ISPRS International Journal of Geo-Information, vol.~5,
+  no. 1, p.~5, Jan. 2016.
+\item
+  A. Yang, H. Fan, and N. Jing, ``Amateur or professional: Assessing the
+  expertise of major contributors in OpenStreetMap based on contributing
+  behaviors'', ISPRS International Journal of Geo-Information, vol.~5,
+  no. 2, p.~21, 2016.
+\item
+  A. Yang, L. Liu, L. Chen, and N. Jing, ``Geographical Workflow System
+  over HPC Clusters Based on MPI'', in Proceedings of the 12th
+  International Conference on GeoComputation, Wuhan, P.R.China, 2013
+\item
+  L. Liu, A. Yang, L. Chen, W. Xiong, Q. Wu, and N. Jing, ``HiGIS-When
+  GIS Meets HPC'', in Proceedings of the 12th International Conference
+  on GeoComputation, Wuhan, P.R.China, 2013
+\end{itemize}
+
+\end{document}

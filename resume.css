@@ -1,6 +1,5 @@
 body {
-    background: #FBFBFB;
-    color: #333;
+    background: #fbfbfb;
     font-family: Verdana, sans-serif;
 }
 
@@ -8,15 +7,45 @@ body {
     margin: auto;
     width: 7.5in;
     padding: .5in;
+    padding-top: .2in;
+}
+
+#container::after {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 1in;
+    background: linear-gradient(30deg, DodgerBlue 0%,DodgerBlue 55%,rgba(84,163,238,1) 55%,rgba(84,163,238,1) 80%,rgba(109,179,242,1) 80%,rgba(109,179,242,1) 100%);
+    /* background-color: DodgerBlue; */
+    /* border-bottom: thin solid #ddd; */
 }
 
 #contact {
+    display: none;
     float: right;
     text-align: right;
+    color: #333;
+    background-color: #fbfbfb;
+    border: thin dashed #333;
+    /* box-shadow: 0 1px 5px 0 #aaa; */
+    padding: .2in;
 }
 
 #contact p {
     margin: .5em;
+}
+
+blockquote {
+    border-left: thick solid DodgerBlue;
+    padding-left: 1em;
+}
+
+em {
+    font-style: normal;
+    color: #999;
 }
 
 img {
@@ -36,14 +65,71 @@ a:hover {
 
 h1 {
     margin-top: 0;
+    margin-bottom: 1.5in;
+    color: #fbfbfb;
+    font-size: 28pt;
+    font-weight: lighter;
 }
 
 h2 {
+    margin-top: 2em;
+    color: DodgerBlue;
+}
+
+h2:before {
+    content: '';
+    position: relative;
+    display: inline-block;
+    left: 0;
+    height: 1em;
+    bottom: -0.15em;
+    width: 1em;
+    margin-right: .3em;
+    background-color: DodgerBlue;
+}
+
+h2:after {
+    content: '';
+    position: relative;
+    display: block;
+    margin-top: .2em;
+    width: 100%;
+    height: 1px;
+    background-color: #ccc;
+}
+
+h3 {
+    color: #999;
+    font-weight: normal;
+    margin-bottom: 0.3em;
     margin-top: 0;
+    display: inline-block;
+    width: 20%;
+    vertical-align: top;
+}
+
+h3+* {
+    display: inline-block;
+    width: 70%;
+    vertical-align: top;
+    margin-top: 0;
+}
+
+h3+p+ol {
+    display: inline-block;
+    margin-left: 20%;
+    width: 70%;
+    vertical-align: top;
 }
 
 ul {
     list-style-type: none;
+    padding-left: 0;
+}
+
+ol {
+    padding-left: 1.7em;
+    margin-top: 0;
 }
 
 ul li ul {
@@ -53,8 +139,54 @@ ul li ul {
 
 li {
     margin-top: 0em;
+    line-height: 22pt;
 }
 
 ul li ul li {
     margin: .5em;
+}
+
+h2+ul>li::first-letter {
+    color: DodgerBlue;
+}
+
+@media (max-width: 800px) {
+    h1 {
+        margin-bottom: 1.7in;
+    }
+
+    h3 {
+        display: block;
+        width: 100%;
+    }
+
+    h3+p+ol {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    #container {
+        width: 90%;
+        padding: 0;
+    }
+
+    #contact {
+        border: none;
+        padding: .3em;
+        padding-right: 0;
+        margin-top: 0.7in;
+        margin-right: -0.1in;
+        color: #999;
+    }
+
+    #container::after {
+        height: 4em;
+    }
+
+    h3+* {
+        display: block;
+        width: 100%;
+        vertical-align: top;
+        margin-top: 0;
+    }
 }
