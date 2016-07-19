@@ -11,15 +11,16 @@ This means you can keep your resume in pure markdown and define pre-processing
 functions that do different things with different parts of the input depending
 on the target output format.
 
-Currently, the main feature is extraction of contact details.  They are
-expected to begin on the fourth line, following the header and a blank line,
-and extend until the next blank line.  Lines with bullets (•) will be split
-into separate lines.
+Currently, the main feature is to build contact details. The contacts can be
+provided using a separate file. An extra file is recommended since that makes
+it possible to provide different details for LaTeX and web versions due to the
+concern of privacy.
 
     Michael White
     =============
 
-    72 Bower St. #1 • Medford, MA, 02155
+    72 Bower St. #1
+    Medford, MA, 02155
     617-899-1621
 
 You can then define a function for an output format like this:
@@ -42,30 +43,12 @@ And finally run it like this:
 import hashlib
 import sys
 import re
+import argparse
 
 
 GRAVATAR = "http://www.gravatar.com/avatar/{hash}?s=200"
 
 
-class Processor(object):
-    handlers = {}
-
-    def register(self, fn):
-        self.handlers[fn.__name__] = fn
-        return fn
-
-    def process(self, format, lines, contact_lines, *args):
-        try:
-            handler = self.handlers[format]
-        except KeyError:
-            raise Exception("Unknown format: %s" % format)
-
-        return handler(lines, contact_lines, *args)
-
-processor = Processor()
-
-
-@processor.register
 def tex(lines, contact_lines, *args):
     def sub(pattern, repl, string, **kwargs):
         """Replacement for re.sub that doesn't replace pattern it's inside the
@@ -95,7 +78,7 @@ def tex(lines, contact_lines, *args):
         line = re.sub(r"<(http.+?)>", r"\url{\1}", line)
         return re.sub(r"\[([^\]]+)\]\(([^\)]+)\)", r"\href{\2}{\1}", line)
 
-    contact_lines = "\n\n".join(map(replace_links, contact_lines))
+    contact_lines = "\\\\\n".join(map(replace_links, contact_lines))
 
     # replacements to apply to the text in contact_lines, because it won't be
     # processed by pandoc
@@ -117,7 +100,6 @@ def tex(lines, contact_lines, *args):
     return "".join(lines)
 
 
-@processor.register
 def html(lines, contact_lines, *args):
     untex = ['LaTeX']
 
@@ -128,11 +110,11 @@ def html(lines, contact_lines, *args):
         contact_lines = list(map(replace, contact_lines))
 
     gravatar = None
-    for line in contact_lines:
-        if '@' in line and '--no-gravatar' not in args:
-            gravatar = GRAVATAR.format(
-                hash=hashlib.md5(line.lower().strip('<>')).hexdigest())
-            break
+    # for line in contact_lines:
+    #     if '@' in line and '--no-gravatar' not in args:
+    #         gravatar = GRAVATAR.format(
+    #             hash=hashlib.md5(line.lower().strip('<>')).hexdigest())
+    #         break
     if gravatar is not None:
         contact_lines.insert(0, "<img src='{}' />".format(gravatar))
 
@@ -145,28 +127,27 @@ def html(lines, contact_lines, *args):
 
 
 def main():
-    try:
-        format = sys.argv[1]
-    except IndexError:
-        raise Exception("No format specified")
+    parser = argparse.ArgumentParser('Preprocess markdown for Pandoc rendering')
 
-    if '-h' in sys.argv or '--help' in sys.argv:
-        sys.stderr.write(
-            "Usage: python resume.py tex|html [--no-gravatar] < INPUT.md\n")
-        raise SystemExit
+    # register format
+    subparsers = parser.add_subparsers(dest='format')
+    for format in ['tex', 'html']:
+        subp = subparsers.add_parser(format)
 
+    # global options
+    parser.add_argument('--contacts')
+    parser.add_argument('--no-gravatar', action='store_true')
+
+    args = parser.parse_args()
     lines = sys.stdin.readlines()
+    if args.contacts:
+        with open(args.contacts) as f:
+            contact_lines = f.readlines()
+    else:
+        contact_lines = []
+    
+    print(globals()[args.format](lines, contact_lines, *args.__dict__))
 
-    contact_lines = []
-    for line in lines[3:]:
-        lines.remove(line)
-        parts = [x.strip() for x in line.split("•")]
-        if parts == ['']:
-            break
-
-        contact_lines.extend(parts)
-
-    print(processor.process(format, lines, contact_lines, *sys.argv[1:]))
 
 if __name__ == '__main__':
     main()
