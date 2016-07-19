@@ -299,6 +299,7 @@ h2+ul>li::first-letter {
 section.work {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     align-items: center;
     width: 100%;
 }
@@ -376,6 +377,12 @@ section.work .design > div {
         padding-top: 0;
         width: 100%;
         box-sizing: border-box;
+        font-size: 10pt;
+        margin: 0;
+    }
+
+    section.level1 {
+        width: 100%;
     }
 
     .banner ul {
@@ -384,7 +391,7 @@ section.work .design > div {
     }
 
     .banner ul li {
-        font-size: 11pt;
+        font-size: 10pt;
     }
 
     h1 {
@@ -412,5 +419,22 @@ section.work .design > div {
         width: 100%;
         vertical-align: top;
         margin-top: 0;
+    }
+
+    section.work, #work {
+        display: none;
+    }
+
+    .title {
+        height: 275px;
+    }
+
+    .title img {
+        width: 1in;
+        height: 1in;
+    }
+
+    nav > div {
+        width: 100%;
     }
 }
