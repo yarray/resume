@@ -16,7 +16,16 @@ function prop(key, list) {
     })
 }
 
+function processMisc() {
+    var bq = document.querySelector('section.level1 > blockquote');
+    var intro = document.querySelector('section.blockquote');
+    bq.parentElement.removeChild(bq);
+    intro.appendChild(bq);
+}
+
 document.addEventListener('DOMContentLoaded', function () {
+    processMisc();
+
     var links = document.querySelectorAll('nav a');
     var sections = document.querySelectorAll('section.level2');
     var scrollY = 294;
@@ -43,6 +52,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 item.classList.remove('current');
             }
         );
+
+    window.switchPanel = switchPanel;
 
     window.togglePanel = function(e, panels) {
         switchLink([e.id]);
