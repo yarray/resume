@@ -30,9 +30,8 @@
 ### 计算机
 
 - 网络应用程序开发 - JavaScript/CSS/HTML
-- 地理信息服务开发 - Python/C++
-- 高性能服务器配置管理 - Linux/Docker/Bash
-- 软件自动化验证与测试 - Tsung/PAT/Cucumber
+- 地理信息服务开发 - Python/C++/PostgreSQL
+- 高性能服务器管理 - Linux/Docker/Bash
 - 时空数据分析 - R/C++/C/SQL
 
 ### 学术研究

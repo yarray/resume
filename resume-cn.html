@@ -28,7 +28,16 @@
       })
   }
   
+  function processMisc() {
+      var bq = document.querySelector('section.level1 > blockquote');
+      var intro = document.querySelector('section.blockquote');
+      bq.parentElement.removeChild(bq);
+      intro.appendChild(bq);
+  }
+  
   document.addEventListener('DOMContentLoaded', function () {
+      processMisc();
+  
       var links = document.querySelectorAll('nav a');
       var sections = document.querySelectorAll('section.level2');
       var scrollY = 294;
@@ -55,6 +64,8 @@
                   item.classList.remove('current');
               }
           );
+  
+      window.switchPanel = switchPanel;
   
       window.togglePanel = function(e, panels) {
           switchLink([e.id]);
@@ -86,18 +97,17 @@
     <div>
         <img src="photo-square.jpg" alt=""/>
         <h1>杨岸然</h1>
-        <blockquote>
-            <em>
-                软件开发|地理信息|绘画|设计
-            </em>
-        </blockquote>
+        <em>
+            软件开发|地理信息|绘画|设计
+        </em>
     </div>
 </div>
 <nav>
     <div>
+        <a id="work" href="javascript:void(0);" onclick="return togglePanel(this, ['开源项目', 'higis', '设计', '绘画'])">作品</a>
         <a id="skill" href="javascript:void(0);" onclick="return togglePanel(this, ['技能'])">技能</a>
         <a id="history" href="javascript:void(0);" onclick="return togglePanel(this, ['教育经历', '项目经历'])">简历</a>
-        <a id="work" href="javascript:void(0);" onclick="return togglePanel(this, ['开源项目', 'higis', '设计', '绘画'])">作品</a>
+        <a id="about" href="javascript:void(0);" onclick="return togglePanel(this, ['自述', '联系方式'])">关于我</a>
     </div>
 </nav>
 <section id="杨岸然" class="level1">
@@ -129,9 +139,8 @@
 <h3>计算机</h3>
 <ul>
 <li>网络应用程序开发 - JavaScript/CSS/HTML</li>
-<li>地理信息服务开发 - Python/C++</li>
-<li>高性能服务器配置管理 - Linux/Docker/Bash</li>
-<li>软件自动化验证与测试 - Tsung/PAT/Cucumber</li>
+<li>地理信息服务开发 - Python/C++/PostgreSQL</li>
+<li>高性能服务器管理 - Linux/Docker/Bash</li>
 <li>时空数据分析 - R/C++/C/SQL</li>
 </ul>
 </section>
@@ -223,8 +232,21 @@
         </ul>
     </div>
 </section>
-<div id="contact">
-    <em>© 2016 杨岸然&nbsp;|&nbsp;anran.yang.china@gmail.com</em>
+<section class="about">
+    <section id="自述" class="blockquote level2">
+    </section>
+    <section id="联系方式" class="level2">
+        <h2>联系方式</h2>
+        <ul>
+        <li>Email: anran.yang.china@gmail.com</li>
+        <li>
+            Homepage: <a href="https://www.github.com/yarray" target="_blank"><em>Github Link</em></a>
+        </li>
+        </ul>
+    </section>
+</section>
+<div class="footnote">
+    <em>© 2016 杨岸然</em>
 </div>
 </body>
 </html>
