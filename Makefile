@@ -17,6 +17,9 @@ html:  $(HTML)
 %-cn.pdf:  %-cn.md $(LATEX_TEMPLATE) header.tex contacts-cn.tex
 	cat contacts-cn.tex $< | pandoc $(PANDOCARGS) --template=$(LATEX_TEMPLATE) -H header.tex -o $@
 
+%-cn-table.pdf:  %-cn-table.md $(LATEX_TEMPLATE) header.tex contacts-cn.tex
+	cat contacts-cn.tex $< | pandoc $(PANDOCARGS) --template=$(LATEX_TEMPLATE) -H header.tex -o $@
+
 ifeq ($(OS),Windows_NT)
   # on Windows
   RM = cmd //C del
