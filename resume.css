@@ -378,7 +378,7 @@ section.work .design > div {
         margin: 0;
     }
 
-    section.level1 {
+    section.level1, section.work, section.about {
         width: 100%;
     }
 
