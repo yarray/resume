@@ -14,8 +14,8 @@ html:  $(HTML)
 %-cn.html: %-cn.md header.html banner-cn.html work-cn.html contacts-cn.html footnote-cn.html
 	cat $< | pandoc -t html5 --section-divs -H header.html -B banner-cn.html -A work-cn.html -A contacts-cn.html -A footnote-cn.html -c resume.css -o $@
 
-%-cn.pdf:  %-cn.md $(LATEX_TEMPLATE) header.tex contacts-cn.tex
-	cat contacts-cn.tex $< | pandoc $(PANDOCARGS) --template=$(LATEX_TEMPLATE) -H header.tex -o $@
+%-cn.pdf:  %-cn.md $(LATEX_TEMPLATE) header.tex contacts-cn.tex footnote-cn.tex
+	cat contacts-cn.tex $< footnote-cn.tex | pandoc $(PANDOCARGS) --template=$(LATEX_TEMPLATE) -H header.tex -o $@
 
 %-cn-table.pdf:  %-cn-table.md $(LATEX_TEMPLATE) header.tex contacts-cn.tex
 	cat contacts-cn.tex $< | pandoc $(PANDOCARGS) --template=$(LATEX_TEMPLATE) -H header.tex -o $@
